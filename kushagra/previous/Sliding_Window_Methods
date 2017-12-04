@@ -1,0 +1,8 @@
+Sliding Window Methods>
+
+1.WQ Method> Make m chains in array and then sliding window method in every chain (SPOJ : FCANDY)
+
+2.WC> Two pointer + Element Count> Sliding window has all elements count less than or equal to their required counts. If length of window is equal to magic length then its the magic window!
+To maintain the constraint> if next element increases the count beyond that required then, move left pointer until count decreases.
+
+3.
