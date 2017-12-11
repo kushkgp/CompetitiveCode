@@ -1,0 +1,21 @@
+1) MSTRING
+ -> dp(i,j) = if k==-1 min(1+dp(i-1,k-1),dp(i-1,j)); else 1
+ 	k is immideate index where s[i] == v[k]
+3) SCALES
+ -> think
+
+
+6) SSHUFFLE
+ -> 3d dp
+  
+7) SERVICE
+ -> think
+
+2) MENU
+	https://www.quora.com/What-is-the-solution-for-the-MENU-problem-on-Sphere-Online-Judge-SPOJ
+2) FOOL https://github.com/t3nsor/SPOJ/blob/master/fool.cpp
+3) MENU
+4) MORSE
+5) STRCOUNT
+6) ANARC07G (DFS+DP)
+ -> https://www.quora.com/How-does-one-solve-ANARC07G-SPOJ-com-Problem-ANARC07G-on-SPOJ

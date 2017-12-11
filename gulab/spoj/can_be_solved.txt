@@ -1,0 +1,72 @@
+https://www.hackerrank.com/challenges/brick-tiling
+make tiling problem with blocking like codesptd
+
+PBOARD
+CZ_PROB1 -precomputation
+DSUBSEQ
+MBEEWALK
+BUD13TLF
+AEROLITE
+SERVICE
+LPERMUT
+AE2A
+FCANDY
+COLORSEG
+
+DIEHARD
+EXPEDI
+GERGOVIA
+INS14C
+MCAMP
+MSCHED
+RMID
+RMID2
+SKYLINE2
+SNGINT
+UPDATEIT
+LIS2
+
+PWRARR
+QTREE - hld + segment tree (http://www.geeksforgeeks.org/heavy-light-decomposition-set-1-introduction/)
+GSS1
+GSS2
+GSS5
+
+CORNET union rank ds
+DP - Graph
+ELEVTRBL
+HERDING
+LCA
+NAKANJ
+SHPATH
+TRAFFICN
+VOCV
+EAGLE1
+GEORGE
+POUR1 - BFS
+
+SKYLINE
+XMAX
+
+SUBST1
+
+
+DTT 
+JEDNAKOS 
+ININT 
+SEQPAR 
+PERMUT1
+
+-----Again----------
+DP
+FCANDY
+
+Maths
+POUR1
+
+BIT
+KOILINE,ORDERS,SSEQ
+
+Segment Tree
+FREQUENT
+PATUJCLI
