@@ -33,11 +33,47 @@ typedef vector<pii> vpii;
 typedef pair<int,ll> pill;
 typedef vector<pill> vpill;
 
+void bfs(int s, int n, vvi & adj, vi & vis){
+	queue<int> q;
+	q.push(s);
+	vis[s] = 0;
+	while(!q.empty()){
+		int u = q.front();
+		q.pop();
+		for(int i = 0; i < adj[u].size(); i++){
+			int v = adj[u][i];
+			if(vis[v]==-1){
+				q.push(v);
+				vis[v] = vis[u]+1;
+			}
+		}
+	}
+}
 
-
-/* To consume line with enter (cin or scanf don't consume enter)*/
-fgets(s,size,stdin)
-
--> op+ has higher precedence than op>> or op<<
-
--> Avoid % operation if not neccessary as it will make solution go tle 
+int main(){
+	int q;
+	cin>>q;
+	while(q--){
+		int n,m;
+		cin>>n>>m;
+		vvi adj(n);
+		for(int i = 0; i<m; i++){
+			int u,v;
+			cin>>u>>v;
+			adj[--u].pb(--v);
+			adj[v].pb(u);
+		}
+		int start;
+		cin>>start;
+		start--;
+		vi vis(n,-1);
+		bfs(start,n,adj,vis);
+		for(int i = 0; i<n; i++){
+			if(i!=start){
+				cout<<(vis[i]>0?6:1)*vis[i]<<" ";
+			}
+		}
+		cout<<endl;
+	}
+	return 0;
+}
