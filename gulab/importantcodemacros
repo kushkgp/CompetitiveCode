@@ -18,10 +18,7 @@
 #define allr(c) (c).rbegin(),(c).rend()
 #define asort(c) sort(all(c))
 #define dsort(c) sort(allr(c))
-#define present(c,x) ((c).find(x) != (c).end())
-#define cpresent(c,x) (find(all(c),x) != (c).end())
 
-#define tr(c,i) for(typeof((c).begin()) i = (c).begin(); i != (c).end(); i++)
 #define BOOST ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
 using namespace std;
