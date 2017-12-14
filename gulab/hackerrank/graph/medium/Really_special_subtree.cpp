@@ -34,17 +34,13 @@ typedef pair<int,ll> pill;
 typedef vector<pill> vpill;
 
 int find(int x, vi & set){
-	if(set[x]!=x){
+	if(set[x]!=x)
 		set[x] = find(set[x],set);
-	}
 	return set[x];
 }
 
 void union_s(int x, int y, vi & set){
-	int i = find(x,set);
-	int j = find(y,set);
-	if(i!=j)
-		set[i] = j;
+	set[find(x,set)] = find(y,set); 
 }
 
 int main(){
