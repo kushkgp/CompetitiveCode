@@ -1,6 +1,6 @@
 /*
-	Author	:	Gulab Arora
-	Institue:	IIT Kharagpur
+	Author		:	Gulab Arora
+	Institute	:	IIT Kharagpur
 */
 
 #include <bits/stdc++.h>
@@ -27,10 +27,6 @@ typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
-typedef pair<int,ll> pill;
-typedef vector<pill> vpill;
-
-
 
 /* To consume line with enter (cin or scanf don't consume enter)*/
 fgets(s,size,stdin)
