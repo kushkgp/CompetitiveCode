@@ -78,11 +78,15 @@ int main(){
 	vector<ll> sol(m+1,0);
 	dfs(0,n,nadj,sol);
 	ll ans;
-	string result;
+	string result,temp;
 	for(int i = 0; i < m; i++){
 		ans = sol[i];
-		result+=to_string(ans%2);
+		temp+=to_string(ans%2);
 		sol[i+1]+=(ans>>1);
+		if(sol[i+1]||ans%2){
+			result+=temp;
+			temp="";
+		}
 	}
 	ans = sol[m];
 	while(ans){
