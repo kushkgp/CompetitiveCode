@@ -39,7 +39,7 @@ void prim(int n, vector<vpii> & adj, vector<vpii> & nadj){
 		int u = x.ss, d = x.ff, parent = m[x];
 		m.erase(m.begin());
 		vis[u] = 1;
-		if(u!=parent)
+		if(u)
 			nadj[parent].pb(mp(u,d));
 		for(int i = 0; i < adj[u].size(); i++){
 			int v = adj[u][i].ff, w = adj[u][i].ss;
@@ -57,7 +57,7 @@ int dfs(int u, int n, vector<vpii> & adj, vector<ll> & sol){
 	int ans = 1;
 	for(int i = 0; i < adj[u].size(); i++){
 		int v = adj[u][i].ff, w = adj[u][i].ss;
-		int x = dfs(v,n,adj,vis,sol);
+		int x = dfs(v,n,adj,sol);
 		sol[w] = (ll)x*(n-x);
 		ans+=x;
 	}
