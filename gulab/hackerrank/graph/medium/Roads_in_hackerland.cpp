@@ -27,8 +27,6 @@ typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
-typedef pair<int,ll> pill;
-typedef vector<pill> vpill;
 
 void prim(int n, vector<vpii> & adj, vector<vpii> & nadj){
 	map<pii,int> m;
