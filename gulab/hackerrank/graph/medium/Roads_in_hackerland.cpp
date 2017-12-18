@@ -32,7 +32,6 @@ void prim(int n, vector<vpii> & adj, vector<vpii> & nadj){
 	map<pii,int> m;
 	vi dist(n,inf);
 	vi vis(n,0);
-	dist[0] = 0;
 	m.insert(mp(mp(0,0),0));
 	while(!m.empty()){
 		pii x = m.begin()->ff;
