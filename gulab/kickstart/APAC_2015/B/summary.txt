@@ -1,1 +1,2 @@
 A-> Combinatorics + dp
+B-> Geeksforgeeks glass wine question
