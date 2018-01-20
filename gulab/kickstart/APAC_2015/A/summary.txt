@@ -1,1 +1,2 @@
-A-> adhoc
+A-> adhoc + recursion
+B-> Segment tree

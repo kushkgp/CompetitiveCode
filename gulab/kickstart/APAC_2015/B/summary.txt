@@ -1,0 +1,2 @@
+A-> dijkstra, be focussed while writing code, a small mistakes can cost you WA and 1 hour in debuggin
+B-> adhoc, but took time to code

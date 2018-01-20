@@ -1,0 +1,2 @@
+A-> adhoc, always match indeces in a loop
+B-> Binary Search reduction
