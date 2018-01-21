@@ -20,6 +20,7 @@
 #define dsort(c) sort(allr(c))
 
 #define BOOST ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#define MOD 1000000007
 
 using namespace std;
 typedef long long int ll;
@@ -28,20 +29,21 @@ typedef vector<vi> vvi;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
 
-bool ans(ll k, ll n){
-	if(k==(n>>1))
-		return 0;
-	if(k < (n>>1))
-		return ans(k,n>>1);
-	return !ans(n-k,n>>1);
-}
 
 int main(){
-	int t,cnt = 1;
+	int t;
 	cin>>t;
+	int cnt = 1;
 	while(t--){
-		ll k;
-		cin>>k;
-		printf("Case #%d: %d\n", cnt++, ans(k,((ll)1)<<62));
+		int n,m;
+		cin>>m>>n;
+		vvi dp(n+1,vi(m+1,0));
+		dp[1][1]=1;
+		for(int i = 1; i <= n; i++){
+			for(int j = 1; j <= m; j++)
+				if(i!=1||j!=1)
+					dp[i][j] = ((ll)j*((dp[i-1][j-1]+dp[i-1][j])%MOD))%MOD;
+		}
+		printf("Case #%d: %d\n",cnt++,dp[n][m]);
 	}
 }

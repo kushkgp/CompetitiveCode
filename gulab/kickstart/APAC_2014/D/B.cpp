@@ -20,7 +20,7 @@
 #define dsort(c) sort(allr(c))
 
 #define BOOST ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-
+#define MAX 5000
 using namespace std;
 typedef long long int ll;
 typedef vector<int> vi;
@@ -28,47 +28,52 @@ typedef vector<vi> vvi;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
 
-
-void build(vector<double> & a, vi & level, int n){
-	for(int i = n-1; i > 0; i--){
-		a[i] = pow(a[i<<1]*a[i<<1|1],0.5);
-		level[i] = level[i<<1]+1;
+class BITree{
+	vi A;
+	int size;
+public:
+	BITree(int n):A(n+1,0),size(n){}
+	int rangequery(int a){
+		int ans = 0;
+		for(int i = a; i > 0; i-=(i&(-i)))
+			ans+=A[i];
+		return ans;
 	}
-}
-
-double query(int l, int r, vector<double> & a, vi & level, int n){
-	double d = r-l+1;
-	double ans = 1;
-	l+=n,r+=n;
-	for(;l<=r;l>>=1,r>>=1){
-		if(l&1){
-			ans*=pow(a[l],(1<<level[l])/d);
-			l++;
-		}
-		if(!(r&1)){
-			ans*=pow(a[r],(1<<level[r])/d);
-			r--;
-		}
+	void rangeupdate(int a, int x){
+		for(int i = a; i <= size; i+=(i&(-i)))
+			A[i]+=x;
 	}
-	return ans;
-}
+	int pointquery(int a){
+		return rangequery(a);
+	}
+	void rangeupdate(int a, int b, int c){
+		rangeupdate(a,c);
+		rangeupdate(b+1,0-c);
+	}
+};
+
 
 int main(){
 	int t,cnt = 1;
 	cin>>t;
 	while(t--){
-		int n,m;
-		cin>>n>>m;
-		vector<double> a(1+(n<<1));
-		vi level(1+(n<<1),0);
-		for(int i = 0; i < n; i++)
-			cin>>a[i+n];
-		printf("Case #%d:\n",cnt++);
-		build(a,level,n);
-		while(m--){
-			int l,r;
-			cin>>l>>r;
-			printf("%0.9lf\n", query(l,r,a,level,n));
+		int n;
+		cin>>n;
+		BITree T(MAX);
+		for(int i = 0; i < n; i++){
+			int a,b;
+			cin>>a>>b;
+			T.rangeupdate(a,b,1);
 		}
+		int p;
+		cin>>p;
+		printf("Case #%d: ", cnt++);
+		while(p--){
+			int a;
+			cin>>a;
+			cout<<T.pointquery(a)<<" ";
+
+		}
+		cout<<endl;
 	}
 }

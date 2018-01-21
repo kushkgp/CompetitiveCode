@@ -1,2 +1,2 @@
-A-> DFS reduction
-B-> Dijkstra, good reduction, read question carefully and think all corner cases before coding
+A-> adhoc, always match indeces in a loop
+B-> Binary Search reduction

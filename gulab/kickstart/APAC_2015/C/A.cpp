@@ -28,58 +28,52 @@ typedef vector<vi> vvi;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
 
-void preprocess(vvi & m, int n){
-	for(int i = 0; i < n; i++){
-		for(int j = 0; j < n; j++){
-			if(m[i][j]!=-1){
-				for(int k1 = -1; k1 < 2; k1++)
-					for(int k2 = -1; k2 < 2; k2++)
-						if(i+k1>=0 && j+k2>=0 && i+k1<n && j+k2<n)
-							m[i][j]+=m[i+k1][j+k2]==-1?1:0;
-			}
-		}
-	}
-}
-
-void dfs(vvi & m, vvi & vis, int n, int i, int j){
-	vis[i][j] = 1;
-	if(m[i][j])
-		return;
-	for(int k1 = -1; k1 < 2; k1++)
-		for(int k2 = -1; k2 < 2; k2++)
-			if(i+k1>=0 && j+k2>=0 && i+k1<n && j+k2<n)
-				if(!vis[i+k1][j+k2])
-					dfs(m,vis,n,i+k1,j+k2);
-}
 
 int main(){
-	int t;
+	int t,cnt = 1;
 	cin>>t;
-	int cnt = 1;
 	while(t--){
+		int p;
+		cin>>p;
+		vi points(p);
+		for(int i = 0; i < p; i++)
+			cin>>points[i];
 		int n;
 		cin>>n;
-		vvi m(n,vi(n));
-		vvi vis(n,vi(n,0));
-		for(int i = 0; i<n; i++){
-			for(int j = 0; j<n; j++){
-				char c;
-				cin>>c;
-				m[i][j] = c=='*'?-1:0;
+		map<string,priority_queue<int> > m;
+		for(int i = 0; i < n; i++){
+			int w;
+			cin>>w;
+			for(int j = 0; j < p; j++){
+				string s;
+				cin>>s;
+				m[s].push(w*points[j]);
 			}
 		}
-		preprocess(m,n);
-		int ans = 0;
-		for(int i = 0; i<n; i++)
-			for(int j = 0; j<n; j++){
-				if(m[i][j]!=-1 && !vis[i][j] && !m[i][j])
-					ans++,dfs(m,vis,n,i,j);
+		vector<pair<int,string> > v;
+		int k;
+		cin>>k;
+		for(auto & it : m){
+			string s = it.ff;
+			int val = 0, tot = 0;
+			while(!it.ss.empty() && tot<k){
+				val+=it.ss.top();
+				it.ss.pop();
+				tot++;
 			}
-		for(int i = 0; i<n; i++)
-			for(int j = 0; j<n; j++){
-				if(m[i][j]!=-1 && !vis[i][j])
-					ans++;
+			v.pb(mp(0-val,s));
+		}
+		asort(v);
+		printf("Case #%d:\n", cnt++);
+		int rank = 0, offset = 0;
+		int prev = INT_MAX;
+		for(int i = 0; i < v.size(); i++){
+			if(v[i].ff!=prev){
+				prev = v[i].ff, rank+=offset;
+				rank++, offset=0;
 			}
-		printf("Case #%d: %d\n",cnt++, ans);
+			else offset++;
+			printf("%d: %s\n", rank, v[i].ss.c_str());
+		}
 	}
 }

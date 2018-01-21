@@ -19,8 +19,10 @@
 #define asort(c) sort(all(c))
 #define dsort(c) sort(allr(c))
 
-#define BOOST ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-#define MAX 5000
+#define F1(x,y,z) for(int x = y; x <= z; x++)
+#define F2(x,y,z) for(int x = y; x >= z; x--)
+#define MOD 1000000007
+
 using namespace std;
 typedef long long int ll;
 typedef vector<int> vi;
@@ -28,52 +30,57 @@ typedef vector<vi> vvi;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
 
-class BITree{
-	vi A;
-	int size;
-public:
-	BITree(int n):A(n+1,0),size(n){}
-	int rangequery(int a){
-		int ans = 0;
-		for(int i = a; i > 0; i-=(i&(-i)))
-			ans+=A[i];
-		return ans;
-	}
-	void rangeupdate(int a, int x){
-		for(int i = a; i <= size; i+=(i&(-i)))
-			A[i]+=x;
-	}
-	int pointquery(int a){
-		return rangequery(a);
-	}
-	void rangeupdate(int a, int b, int c){
-		rangeupdate(a,c);
-		rangeupdate(b+1,0-c);
-	}
-};
+int n,m,q;
 
+bool func(vi & v, vpii & pos, int t){
+	int tot = q;
+	F1(i,0,n-1){
+		if(!pos[i].ff) continue;
+		int curr = inf;
+		F1(j,0,m-1){
+			if(!v[j]) continue;
+			if(((v[j]>0)^(pos[i].ff>0)) && ((abs(pos[i].ff)+abs(v[j])-1)/abs(v[j])) <= t)
+				curr = min(curr,abs(pos[i].ss-j));
+		}
+		if(curr>tot)
+			return 0;
+		tot-=curr;
+	}
+	return 1;
+}
+
+int BS(vi & v, vpii & pos){
+	int l = 0, r = inf>>1;
+	int x = -1;
+	while(l<=r){
+		int mid = (l+r)/2;
+		if(func(v,pos,mid)){
+			x = mid;
+			r = mid-1;
+		}
+		else
+			l = mid+1;
+	}
+	return x;
+}
 
 int main(){
 	int t,cnt = 1;
 	cin>>t;
 	while(t--){
-		int n;
-		cin>>n;
-		BITree T(MAX);
-		for(int i = 0; i < n; i++){
-			int a,b;
-			cin>>a>>b;
-			T.rangeupdate(a,b,1);
-		}
-		int p;
-		cin>>p;
+		cin>>n>>m>>q;
+		vi v(m);
+		F1(i,0,m-1)
+			cin>>v[i];
+		vpii l(n);
+		F1(i,0,n-1)
+			cin>>l[i].ff>>l[i].ss;
 		printf("Case #%d: ", cnt++);
-		while(p--){
-			int a;
-			cin>>a;
-			cout<<T.pointquery(a)<<" ";
-
-		}
+		int ans = BS(v,l);
+		if(ans==-1)
+			cout<<"IMPOSSIBLE";
+		else
+			cout<<ans;
 		cout<<endl;
 	}
 }

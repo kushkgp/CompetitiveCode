@@ -18,7 +18,7 @@
 #define allr(c) (c).rbegin(),(c).rend()
 #define asort(c) sort(all(c))
 #define dsort(c) sort(allr(c))
-
+#define _USE_MATH_DEFINES
 #define BOOST ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
 using namespace std;
@@ -28,20 +28,20 @@ typedef vector<vi> vvi;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
 
-bool ans(ll k, ll n){
-	if(k==(n>>1))
-		return 0;
-	if(k < (n>>1))
-		return ans(k,n>>1);
-	return !ans(n-k,n>>1);
-}
-
 int main(){
-	int t,cnt = 1;
+	int t,cnt=1;
 	cin>>t;
 	while(t--){
-		ll k;
-		cin>>k;
-		printf("Case #%d: %d\n", cnt++, ans(k,((ll)1)<<62));
+		int v,d;
+		cin>>v>>d;
+		long double theta,g = 9.8;
+		theta = d*g;
+		theta/=v*v;
+		if(theta>1)
+			theta=1;
+		theta = asin(theta);
+		theta*=90;
+		theta/=M_PIl;
+		printf("Case #%d: %0.7Lf\n", cnt++, theta);
 	}
 }

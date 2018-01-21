@@ -28,63 +28,60 @@ typedef vector<vi> vvi;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
 
-ll bs(int p, ll k){
-	ll l = 1, r = 1e15;
-	ll x = -1;
-	while(l<=r){
-		ll mid = (l+r)>>1;
-		if(floor((long double)k/mid)<=p){
-			if(floor((long double)k/mid)==p)
-				x = mid;
-			r = mid-1;
+int dfs(int u, vi & vis, vvi & adj, int f){
+	vis[u] = f+1;
+	int ret = 1;
+	for(int i = 0; i < adj[u].size(); i++){
+		int v = adj[u][i];
+		if(!vis[v]){
+			ret=dfs(v,vis,adj,!f);
+			if(!ret)
+				break;
 		}
-		else
-			l = mid+1;
-	}
-	return x;
-}
-
-ll bs2(int p, ll k){
-	ll l = 1, r = 1e15;
-	ll x = 0;
-	while(l<=r){
-		ll mid = (l+r)>>1;
-		if(floor((long double)k/mid)>=p){
-			if(floor((long double)k/mid)==p)
-				x = mid;
-			l = mid+1;
+		else if((vis[v]-1)==f){
+			ret=0;
+			break;
 		}
-		else
-			r = mid-1;
 	}
-	return x;
+	return ret;
 }
 
 int main(){
-	int t, cnt = 1;
+	int t,cnt=1;
 	cin>>t;
 	while(t--){
-		int n;
+		int n,tot=0;
 		cin>>n;
-		ll l = 1, r = 1e15;
+		vvi adj;
+		map<string,int> m;
 		for(int i = 0; i < n; i++){
-			int p;
-			ll k;
-			cin>>p>>k;
-			if(p==k && p==0)
-				continue;
-			k*=100;
-			l = max(l,bs(p,k));
-			r = min(r,bs2(p,k));
-			if(p==100){
-				l = r = k/100;
+			string a,b;
+			cin>>a>>b;
+			if(m.find(a)==m.end()){
+				m[a]=tot++;
+				adj.pb(vi());
+			}
+			if(m.find(b)==m.end()){
+				m[b]=tot++;
+				adj.pb(vi());
+			}
+			adj[m[a]].pb(m[b]);
+			adj[m[b]].pb(m[a]);
+		}
+		int f = 1;
+		vi vis(tot,0);
+		for(int i = 0; i < tot; i++){
+			if(!vis[i]){
+				f=dfs(i,vis,adj,0);
+				if(!f)
+					break;
 			}
 		}
 		printf("Case #%d: ", cnt++);
-		if(l==r)
-			cout<<l;
+		if(f)
+			cout<<"Yes";
 		else
-			cout<<-1;
+			cout<<"No";
 		cout<<endl;
 	}
 }

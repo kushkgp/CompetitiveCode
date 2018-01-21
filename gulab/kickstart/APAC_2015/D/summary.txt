@@ -1,2 +1,2 @@
-A-> DAG, adhoc
-B-> used BITree, code it with segment tree also
+A-> dfs
+B-> tricky binary search reduction, taken help, read question carefully

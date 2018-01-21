@@ -28,31 +28,70 @@ typedef vector<vi> vvi;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
 
+ll gcd(ll a, ll b){
+	if(b>a)
+		return gcd(b,a);
+	if(b==0)
+		return a;
+	return gcd(b,a%b);
+}
 
 int main(){
-	int t;
+	int t,cnt = 1;
 	cin>>t;
-	for(int cnt = 1; cnt<=t; cnt++){
-		int b,l,n;
-		cin>>b>>l>>n;
-		vector<vector<double> > v(2,vector<double>( ( ((l+2)*(l+1))/2 )+1,0));
-		v[0][1]=750*b;
-		for(int j = 0; j < l; j++){
-			int f = j%2;
-			int line = 1, glass=1;
-			fill(v[!f].begin(),v[!f].end(),0);
-			for(int i = 1; i <=((j+1)*(j+2))/2; i++){
-				double X = v[f][i];
-				v[f][i] = X>=250?250:X;
-				X= X>=250?X-250:0;
-				v[!f][i]+=X/3;
-				v[!f][i+line]+=X/3;
-				v[!f][i+line+1]+=X/3;
-				++glass;
-				if(glass>line)
-					++line,glass=1;
+	while(t--){
+		int np,ne,nt;
+		cin>>np>>ne>>nt;
+		vi vp(np),ve(ne),vt(nt);
+		for(int i = 0; i < np; i++)
+			cin>>vp[i];
+		for(int i = 0; i < ne; i++)
+			cin>>ve[i];
+		for(int i = 0; i < nt; i++)
+			cin>>vt[i];
+		map<pii,set<int> > e2;
+		for(int i = 0; i < ne; i++)
+			for(int j = 0; j < nt; j++){
+				int g = gcd(ve[i],vt[j]);
+				e2[mp(ve[i]/g,vt[j]/g)].insert(i);
 			}
+		vector<vector<pii> > e1(np,vector<pii>(ne));
+		for(int i = 0; i < np; i++)
+			for(int j = 0; j < ne; j++){
+				int g = gcd(vp[i],ve[j]);
+				e1[i][j] = mp(vp[i]/g,ve[j]/g);
+			}
+		printf("Case #%d:\n", cnt++);
+		int m;
+		cin>>m;
+		while(m--){
+			ll p,q;
+			cin>>p>>q;
+			ll g = gcd(p,q);
+			p/=g;
+			q/=g;
+			int f = 0;
+			for(int i = 0; i < np; i++)
+				for(int j = 0; j < ne; j++){
+					ll x = p*e1[i][j].ss;
+					ll y = q*e1[i][j].ff;
+					ll g = gcd(x,y);
+					x/=g;
+					y/=g;
+					if(x!=(int)x || y!=(int)y)
+						continue;
+					pii req = mp((int)x,(int)y);
+					if(e2.find(req)!=e2.end())
+						if(e2[req].size()>1)
+							f = 1;
+						else if(*e2[req].begin()!=j)
+							f=1;
+				}
+			if(f)
+				cout<<"Yes";
+			else
+				cout<<"No";
+			cout<<endl;
 		}
-		printf("Case #%d: %.7lf\n", cnt, v[(l-1)%2][n]);
 	}
 }

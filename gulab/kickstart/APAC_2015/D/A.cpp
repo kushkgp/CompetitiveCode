@@ -27,46 +27,86 @@ typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
-/*
-	location, length
-*/
+
+void dfs(vvi & m, vvi & vis, int & r, int & c, int x, int y){
+	vis[x][y]=1;
+	if(x-1>=0 && m[x-1][y] && !vis[x-1][y])
+		dfs(m,vis,r,c,x-1,y);
+
+	if(y-1>=0 && m[x][y-1] && !vis[x][y-1])
+		dfs(m,vis,r,c,x,y-1);
+
+	if(x+1<r && m[x+1][y] && !vis[x+1][y])
+		dfs(m,vis,r,c,x+1,y);
+
+	if(y+1<c && m[x][y+1] && !vis[x][y+1])
+		dfs(m,vis,r,c,x,y+1);
+}
 
 int main(){
-	int t;
+	int t,cnt=1;
 	cin>>t;
-	int cnt=1;
 	while(t--){
+		int r,c;
+		cin>>r>>c;
+		vvi m(r,vi(c));
+		for(int i = 0; i < r; i++){
+			for(int j = 0; j < c; j++){
+				char ch;
+				cin>>ch;
+				m[i][j] = (ch=='1');
+			}
+		}
+		int ans = 0;
+		{
+			vvi vis(r,vi(c,0));
+			for (int i = 0; i < r; ++i){
+				for (int j = 0; j < c; ++j){
+					if(m[i][j] && !vis[i][j]){
+						ans++;
+						dfs(m,vis,r,c,i,j);
+					}
+				}
+			}
+		}
 		int n;
 		cin>>n;
-		vvi v(n,vi(n));
-		vpii d(n*n+1,mp(0,0));
-		for(int i = 0; i < n; i++){
-			for (int j = 0; j < n; ++j)
-			{
-				cin>>v[i][j];
-				d[v[i][j]].ff = n*i+j;
+		printf("Case #%d:\n", cnt++);
+		while(n--){
+			char ch;
+			cin>>ch;
+			if(ch=='Q')
+				cout<<ans<<endl;
+			else{
+				int x,y,z;
+				cin>>x>>y>>z;
+				if(m[x][y]!=z){
+					vvi vis(r,vi(c,0));
+					m[x][y] = 0;
+					int curr=0;
+					if(x-1>=0 && m[x-1][y] && !vis[x-1][y]){
+						curr++;
+						dfs(m,vis,r,c,x-1,y);
+					}
+					if(y-1>=0 && m[x][y-1] && !vis[x][y-1]){
+						curr++;
+						dfs(m,vis,r,c,x,y-1);
+					}					
+					if(x+1<r && m[x+1][y] && !vis[x+1][y]){
+						curr++;
+						dfs(m,vis,r,c,x+1,y);
+					}
+					if(y+1<c && m[x][y+1] && !vis[x][y+1]){
+						curr++;
+						dfs(m,vis,r,c,x,y+1);
+					}
+					if(z)
+						ans-=curr-1;
+					else
+						ans+=curr-1;
+					m[x][y] = z;
+				}
 			}
 		}
-		int ans = 0,room = 1;
-		for(int i = n*n; i > 0; i--){
-			d[i].ss++;
-			if(ans<=d[i].ss){
-				ans = d[i].ss;
-				room = i;
-			}
-			int x = d[i].ff/n,y = d[i].ff%n;
-			if(x && v[x-1][y]+1==v[x][y])
-				d[v[x-1][y]].ss = max(d[v[x-1][y]].ss, d[i].ss);
-
-			if(y && v[x][y-1]+1==v[x][y])
-				d[v[x][y-1]].ss = max(d[v[x][y-1]].ss, d[i].ss);
-			
-			if(x < n-1 && v[x+1][y]+1==v[x][y])
-				d[v[x+1][y]].ss = max(d[v[x+1][y]].ss, d[i].ss);
-			
-			if(y < n-1 && v[x][y+1]+1==v[x][y])
-				d[v[x][y+1]].ss = max(d[v[x][y+1]].ss, d[i].ss);
-		}
-		printf("Case #%d: %d %d\n", cnt++, room, ans);
 	}
 }

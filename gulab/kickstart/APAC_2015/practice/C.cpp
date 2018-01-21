@@ -28,20 +28,27 @@ typedef vector<vi> vvi;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
 
-bool ans(ll k, ll n){
-	if(k==(n>>1))
-		return 0;
-	if(k < (n>>1))
-		return ans(k,n>>1);
-	return !ans(n-k,n>>1);
-}
 
 int main(){
 	int t,cnt = 1;
 	cin>>t;
 	while(t--){
-		ll k;
-		cin>>k;
-		printf("Case #%d: %d\n", cnt++, ans(k,((ll)1)<<62));
+		int n;
+		cin>>n;
+		int ans = 0;
+		char c[102];
+		fgets(c,101,stdin);
+		string s;
+		for(int i = 0; i < n; i++){
+			fgets(c,101,stdin);
+			string temp(c);
+			if(temp[temp.length()-1]=='\n')
+				temp.resize(temp.length()-1);
+			if(temp<s)
+				ans++;
+			else
+				s=temp;
+		}
+		printf("Case #%d: %d\n", cnt++, ans);
 	}
 }
