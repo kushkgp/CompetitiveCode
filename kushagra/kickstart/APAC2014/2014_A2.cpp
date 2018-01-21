@@ -12,51 +12,51 @@ typedef pair<int,int> pii;
 typedef vector<pii> vp ;
 typedef vector<vp> vvp;
 
+
+int find_next_nonzero(vi &arr, int s){
+	int n = arr.size();
+	while(s<n){
+		if(arr[s]!=0)
+			return s;
+		s++;
+	}
+	return -1;
+}
 void modify_array(vi & arr){
 	int n = arr.size();
 	int i=0,j=0;
-	
-	while(j<n-1&&i<n){
-		int flag = 0;
-		// while(arr[j++]==0){
-		// 	if(j>=n){
-		// 		flag = 1;
-		// 		break;
-		// 	}
+	int crt = 1;
+	int flag = 1;
+	while(crt<n){
+		// if(flag){
+		// 	crt = find_next_nonzero(arr, crt);
+		// 	i = crt;
+		// 	crt++;
 		// }
-		// if(flag)
-		// 	break;
-		// j--;
-		// int t = arr[j];
-		// arr[j++] = 0;
-		// arr[i] = t;
-		// flag = 0;
-		// cout <<i << " " << arr[i] << endl;
-		while(arr[++j]==0){
-			if(j>=n-1){
-				flag = 1;
-				break;
-			}
-		}
-		if(flag)
+		crt = find_next_nonzero(arr,crt);
+		if(crt<0)
 			break;
-		// cout << j << " " << arr[j] << endl;
+		j = crt;
+		crt++;
+		// cout << i << " " << j << endl;
 		if(arr[i]==arr[j]){
 			arr[i]<<=1;
-			arr[j]=0;
+			arr[j] = 0;
 		}
 		else{
 			if(arr[i]==0){
-				arr[i] = arr[j];
-				arr[j++] = 0;
+				int t = arr[j];
+				arr[j] = 0;
+				arr[i] = t;
+				i--;
 			}
 			else{
-				int t=arr[j];
-				arr[j]=0;
-				arr[++i]=t;
+				int t = arr[j];
+				arr[j] = 0;
+				arr[i+1] = t;
 			}
 		}
-		// cout << arr[0] << "--------------" <<endl;
+		i++;
 	}
 }
 
@@ -65,7 +65,7 @@ int main(){
 	// a[0] = 2;
 	// a[1] = 2;
 	// a[2] = 2;
-	// a[3] = 0;
+	// a[3] = 2;
 	// a[4] = 0;
 	// a[5] = 0;
 	// modify_array(a);
