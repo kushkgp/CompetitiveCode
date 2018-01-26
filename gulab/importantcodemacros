@@ -31,6 +31,12 @@ typedef vector<pii> vpii;
 /* To consume line with enter (cin or scanf don't consume enter)*/
 fgets(s,size,stdin)
 
+
+/* read string until delimiter(includes if any)
+getdelim(&c,&z,(int)'+',stdin)
+char**,size_t*,int,fp
+don't forget initialize c to NULL and then free
+
 -> op+ has higher precedence than op>> or op<<
 
 -> Avoid % operation if not neccessary as it will make solution go tle 

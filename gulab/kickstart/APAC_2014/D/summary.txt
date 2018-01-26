@@ -1,2 +1,3 @@
 A-> DAG, adhoc
 B-> used BITree, code it with segment tree also
+C-> adhoc

@@ -29,3 +29,46 @@ typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
+vi a(10);
+
+int length(int x){
+	int f = 0;
+	while(x){
+		if(!a[x%10])
+			return inf;
+		x/=10;
+		f++;
+	}
+	return f; 
+}
+
+void find(vi & dp, int x){
+	if(dp[x])
+		return;
+	dp[x] = length(x);
+	for(int i = 2; i*i<=x; i++){
+		if(x%i) continue;
+		find(dp,i);
+		find(dp,x/i);
+		dp[x] = min(dp[x],dp[i]+dp[x/i]+1);
+	}
+}
+
+int main(){
+	int t, cnt =1;
+	cin>>t;
+	while(t--){
+		F1(i,0,9)
+			cin>>a[i];
+		int x;
+		cin>>x;
+		vi dp(x+1,0);
+		find(dp,x);
+		printf("Case #%d: ", cnt++);
+		if(dp[x]==inf||!dp[x])
+			cout<<"Impossible";
+		else
+			cout<<dp[x]+1;
+		cout<<endl;
+	}
+}

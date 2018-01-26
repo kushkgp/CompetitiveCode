@@ -29,3 +29,39 @@ typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
+
+
+int main(){
+	int t, cnt =1;
+	cin>>t;
+	while(t--){
+		int n;
+		cin>>n;
+		map<string,string> m;
+		map<string,int> s;
+		F1(i,0,n-1){
+			string a,b;
+			cin>>a>>b;
+			m[a] = b;
+			if(s.find(b)==s.end() || s[b])
+				s[b] = 0;
+			if(s.find(a)==s.end())
+				s[a] = 1;
+		}
+		string st;
+		for(auto & it: s){
+			if(it.ss){
+				st = it.ff;
+				break;
+			}
+		}
+		printf("Case #%d: ", cnt++);
+		while(!m.empty()){
+			cout<<st<<"-"<<m[st]<<" ";
+			string temp = st;
+			st = m[st];
+			m.erase(temp);
+		}
+		cout<<endl;
+	}
+}

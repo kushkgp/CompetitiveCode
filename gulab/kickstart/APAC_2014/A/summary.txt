@@ -1,2 +1,3 @@
 A-> taken help for large inputs(question was about ambiguous display not no.s), read question carefully
 B-> comparitively easy, reuse code as a function as much as possible
+C-> tricky bfs reduction, no solution accepted(even not the downloaded ones)
