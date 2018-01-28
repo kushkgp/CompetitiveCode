@@ -1,2 +1,3 @@
 A-> adhoc, always match indeces in a loop
-B-> Binary Search reduction
+B-> Binary Search reduction, a simple formula can also be used
+C-> DP+bitmasking, learned __builtin functions and some tricks, see code

@@ -32,11 +32,24 @@ typedef vector<pii> vpii;
 fgets(s,size,stdin)
 
 
-/* read string until delimiter(includes if any)
-getdelim(&c,&z,(int)'+',stdin)
-char**,size_t*,int,fp
-don't forget initialize c to NULL and then free
+/* split string with delimiter
+istream& getline (istream&& is, string& str, char delim)
+vector<string> split(const string &s, char delim) {
+    stringstream ss(s);
+    string item;
+    vector<string> tokens;
+    while (getline(ss, item, delim)) {
+        tokens.push_back(item);
+    }
+    return tokens;
+}
 
 -> op+ has higher precedence than op>> or op<<
 
--> Avoid % operation if not neccessary as it will make solution go tle 
+-> Avoid % operation if not neccessary as it will make solution go tle
+
+-> Use __builtin_popcount(uint) for no. of set bits (__builtin_popcountll for long long)
+	||ly use __builtin_ffs (Returns one plus the index of the least significant 1-bit of x, or if x is zero, returns zero.)
+
+	and __builtin_clz (Returns the number of leading 0-bits in x, starting at the most significant bit position. If x is 					0, the result is undefined)
+	and __builtin_ctz (Returns the number of trailing 0-bits in x, starting at the least significant bit position. If x is 					  0, the result is undefined.)
