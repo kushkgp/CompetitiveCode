@@ -1,3 +1,4 @@
 A-> DAG, adhoc
 B-> used BITree, code it with segment tree also
 C-> adhoc
+D-> easy adhoc but lengthy question, always think which should be key in map(as keys are unique in map)

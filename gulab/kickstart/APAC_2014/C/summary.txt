@@ -1,3 +1,4 @@
 A-> DFS reduction
 B-> Dijkstra, good reduction, read question carefully and think all corner cases before coding
 C-> Dp(top down)
+D-> adhoc lengthy question, no need to do it

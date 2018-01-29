@@ -1,3 +1,4 @@
 A-> dijkstra, be focussed while writing code, a small mistakes can cost you WA and 1 hour in debugging
 B-> adhoc, but took time to code
-C-> sieve+nim, always every block after writing whether it is syntactically and algorithmically correct, took help while debugging
+C-> sieve+nim, always check every block after writing whether it is algorithmically correct, took help while debugging
+D-> DP, difficult question but elegent solution, taken help from quora
