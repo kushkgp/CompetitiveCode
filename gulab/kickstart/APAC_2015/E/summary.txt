@@ -1,3 +1,4 @@
 A-> adhoc
 B-> adhoc
 C-> dp+expected value
+D-> very good question, difficult binary search and array manipulation
