@@ -1,3 +1,4 @@
 A-> adhoc + recursion
 B-> Segment tree
 C-> Dijkstra reduction
+D-> Implementation wise tough question, taken help for debugging and answer
