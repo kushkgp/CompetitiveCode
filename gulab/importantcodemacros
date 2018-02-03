@@ -29,7 +29,7 @@ typedef pair<int,int> pii;
 typedef vector<pii> vpii;
 
 /* To consume line with enter (cin or scanf don't consume enter)*/
-fgets(s,size,stdin)
+istream& getline (istream&& is, string& str, char delim)
 
 
 /* split string with delimiter
