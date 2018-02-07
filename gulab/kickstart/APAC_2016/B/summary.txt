@@ -1,0 +1,3 @@
+A-> adhoc
+B-> adhoc + maths, good question, stuck at corner case
+C-> adhoc but difficult, reduction similar to range update and then single query question

@@ -16,6 +16,8 @@
 
 #define all(c) (c).begin(),(c).end()
 #define allr(c) (c).rbegin(),(c).rend()
+#define asort(c) sort(all(c))
+#define dsort(c) sort(allr(c))
 
 #define F1(x,y,z) for(int x = y; x <= z; x++)
 #define F2(x,y,z) for(int x = y; x >= z; x--)
@@ -27,3 +29,17 @@ typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
+
+
+int main(){
+	int t, cnt = 1;
+	cin>>t;
+	while(t--){
+		int a,b;
+		cin>>a>>b;
+		ll ans = min(a,b);
+		ans*=(ans+1);
+		ans>>=1;
+		printf("Case #%d: %lld\n", cnt++, ans);
+	}
+}

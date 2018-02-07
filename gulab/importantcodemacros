@@ -16,8 +16,6 @@
 
 #define all(c) (c).begin(),(c).end()
 #define allr(c) (c).rbegin(),(c).rend()
-#define asort(c) sort(all(c))
-#define dsort(c) sort(allr(c))
 
 #define BOOST ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
