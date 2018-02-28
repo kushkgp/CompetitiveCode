@@ -35,19 +35,31 @@ typedef v<pii> vpii;
 int phi[100001];
 vi comp;
 
+inline void numbers(int & n, vi & ret){
+	string s = to_string(n);
+	F1(i,0,(int)s.length()-1)
+		ret.push_back(stoi(s.substr(0,i)+s.substr(i+1)));
+}
+
 void precompute(){
 	memset(phi,0,sizeof(phi));
 	phi[1] = 1;
+	phi[0] = 1;
 	for(int i = 2; i<=N; i++){
 		if(!phi[i]){
 			for(int j = i; (ll)j*i<=N; j++)
-				phi[i*j] = i;
+				phi[i*j] = 1;
 		}
 		else{
-			if(i<10)
-				phi[i] = 1;
-			else{
-				
+			if(i>9){
+				vi x;
+				numbers(i,x);
+				F1(j,0,(int)x.size()-1){
+					if(!phi[x[j]]){
+						phi[i] = 0;
+						break;
+					}
+				}
 			}
 		}
 	}
@@ -64,6 +76,8 @@ int main(){
 	while(t--){
 		int a,b;
 		cin>>a>>b;
+		if(a>b)
+			swap(a,b);
 		int x = upper_bound(all(comp),b) - upper_bound(all(comp),a-1);
 		cout<<x<<endl;
 	}
