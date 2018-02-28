@@ -16,6 +16,7 @@
 
 #define all(c) (c).begin(),(c).end()
 #define allr(c) (c).rbegin(),(c).rend()
+#define BOOST ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
 #define F1(x,y,z) for(int x = y; x <= z; x++)
 #define F2(x,y,z) for(int x = y; x >= z; x--)
