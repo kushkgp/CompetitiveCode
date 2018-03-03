@@ -33,19 +33,24 @@ typedef v<pii> vpii;
 
 #define N 1000000
 int phi[1000001];
-
+bool f[1000001];
 void precompute(){
 	memset(phi,0,sizeof(phi));
 	int tot = 0;
 	F1(i,2,N){
+		f[i] = false;
 		if(!phi[i])
-			for(int j = i; (ll)j*i<=N; j++){
-				if(!phi[i*j]) phi[i*j] = 1;
-				if(!(j%i)) phi[i*j] = 2;
-			}
-			
-		tot+=(phi[i]==1);
-		if(phi[i]==1 && !(tot%108))
+			for(int j = 2; (ll)j*i<=N; j++)
+				phi[i*j] = i;
+		else{
+			int x = i/phi[i];
+			if(!phi[x])
+				f[i] = (phi[i]!=x);
+			else
+				f[i] = f[x]&&(phi[x]!=phi[i]);
+		}
+		tot+=f[i];
+		if(f[i] && !(tot%108))
 			cout<<i<<endl;
 	}
 	

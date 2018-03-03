@@ -31,27 +31,44 @@ typedef v<vi> vvi;
 typedef pair<int,int> pii;
 typedef v<pii> vpii;
 
-#define N 1000000
-int phi[1000001];
+#define N 110
+ll phi[112];
+vi primes;
 
 void precompute(){
-	memset(phi,0,sizeof(phi));
-	int tot = 0;
-	F1(i,2,N){
-		if(!phi[i])
-			for(int j = i; (ll)j*i<=N; j++){
-				if(!phi[i*j]) phi[i*j] = 1;
-				if(!(j%i)) phi[i*j] = 2;
+	fill(begin(phi),end(phi),0);
+	F1(i,2,N)
+		if(!phi[i]){
+			primes.pb(i);
+			for(int j = i; j*i<=N; j++)
+				phi[i*j] = 1;
+		}
+	F1(i,1,N){
+		phi[i] = 1;
+		F1(j,0,primes.size()-1 && primes[j]<=i){
+			int cnt = 0, x=primes[j];
+			while(x<=i){
+				cnt+=i/x;
+				x*=primes[j];
 			}
-			
-		tot+=(phi[i]==1);
-		if(phi[i]==1 && !(tot%108))
-			cout<<i<<endl;
+			phi[i]*=cnt+1;
+		}
 	}
-	
 }
-/* only true for numbers with powers of primes == 1 in prime factorization*/
+
 int main(){
 	BOOST;
 	precompute();
+	int t;
+	cin>>t;
+	while(t--){
+		ll n;
+		cin>>n;
+		int x = lower_bound(begin(phi)+1,end(phi),n) - begin(phi);
+		if(phi[x]==n)
+			cout<<x;
+		else
+			cout<<"nai";
+		cout<<endl;
+	}
 }

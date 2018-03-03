@@ -31,27 +31,36 @@ typedef v<vi> vvi;
 typedef pair<int,int> pii;
 typedef v<pii> vpii;
 
-#define N 1000000
-int phi[1000001];
+#define N 10000
+bool phi[10001];
+vi primes;
 
 void precompute(){
-	memset(phi,0,sizeof(phi));
-	int tot = 0;
-	F1(i,2,N){
-		if(!phi[i])
-			for(int j = i; (ll)j*i<=N; j++){
-				if(!phi[i*j]) phi[i*j] = 1;
-				if(!(j%i)) phi[i*j] = 2;
-			}
-			
-		tot+=(phi[i]==1);
-		if(phi[i]==1 && !(tot%108))
-			cout<<i<<endl;
-	}
-	
+	fill(begin(phi),end(phi),false);
+	F1(i,2,N)
+		if(!phi[i]){
+			primes.pb(i);
+			for(int j = i; j*i<=N; j++)
+				phi[i*j] = true;
+		}
 }
-/* only true for numbers with powers of primes == 1 in prime factorization*/
+
 int main(){
-	BOOST;
 	precompute();
+	int t;
+	cin>>t;
+	while(t--){
+		int n;
+		cin>>n;
+		ll ans = 1;
+		F1(i,0,primes.size()-1 && primes[i]<=n){
+			int p = primes[i];
+			while(p<=n)
+				p*=primes[i];
+			p/=primes[i];
+			ans*=p;
+			ans%=MOD;
+		}
+		cout<<ans<<endl;
+	}
 }
