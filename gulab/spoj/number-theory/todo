@@ -1,16 +1,30 @@
 Problems:
-GCDEX
-NTG
-FNRANK
-FIBPOL
+AFS
+AFS2
+FIBOSUM
+
+
+EASYFACT
+ANARC08I
 
 Study:
 https://web.stanford.edu/class/cs97si/02-mathematics.pdf
 https://www.topcoder.com/community/data-science/data-science-tutorials/primality-testing-non-deterministic-algorithms/
-
-EASYFACT
 LCMSUM https://forthright48.blogspot.in/2015/08/spoj-lcmsum-lcm-sum.html
 
 graph
 KFSTB - dp+toposort or dfs
 GRASSPLA
+
+DP
+C1TABOVI
+
+Greedy
+CHASE
+
+Segment Tree(lazy)
+CNTPRIME
+
+No idea
+C1LJUTNJ
+COLONY(recursion probably)
