@@ -9,6 +9,7 @@
 #define min3(a,b,c) (min(min(a,b),c))
 #define inf 1e9
 #define mod 1000000007
+#define MOD 1000000007
 
 #define F1(x,y,z) for(int x = y; x <= z; x++)
 #define F2(x,y,z) for(int x = y; x >= z; x--)
@@ -36,58 +37,37 @@ typedef pair<int,int> pii;
 typedef vector<pii> vii;
 typedef vector<vii> vvii;
 
-bool phi[(int)1e6+1];
-ll n = (int)1e6+1;
-ll k;
-vi primes;
 
-int precompute(){
-	fill(begin(phi),end(phi),false);
-	phi[0]=phi[1]=1;
-	F1(i,2,n){
-		if(!phi[i]){
-			primes.pb(i);
-			for(int j=i;(ll)j*i<=n;j++){
-				phi[j*i]=true;
-			}
-		}
+void compute(int n, int maxi, vi &num, vi &den){
+	num.pb(0),den.pb(1);
+	num.pb(1),den.pb(n);
+	int i=2;
+	while(maxi>=i){
+		int k = (n+den[i-2])/den[i-1];
+		num.pb(k*num[i-1] - num[i-2]);
+		den.pb(k*den[i-1] - den[i-2]);
+		i++;
 	}
-	return 1;
-}
-int compute(ll p, ll &ans){
-	ll cnt=0;
-	while(k%p==0)
-		cnt++,k/=p;
-	if(!cnt)
-		return 1;
-	ll cnt1=0;
-	ll bs=p;
-	while(n>=bs){
-		cnt1+=(n/bs);
-		if(bs>(double)n/p)
-			break;
-		bs*=p; 
-	}
-	ans = min(ans, cnt1/cnt);
-}
-ll get_answer(ll &ans){
-	ans=LLONG_MAX;
-	F1(i,0,(int)primes.size()-1 && primes[i]<=k){
-		compute(primes[i],ans);
-	}
-	if(k!=1){
-		compute(k,ans);
-	}
-	return ans;
+	return;
 }
 
 int main(){
-	precompute();
 	int t;
 	cin >> t;
-	ll ans;
 	while(t--){
-		cin >> n >> k;
-		cout << get_answer(ans) << endl;
+		int n,m;
+		cin >> n >> m;
+		vi qr(m);
+		int maxi = 0;
+		F1(i,0,m-1){
+			cin >> qr[i];
+			maxi = max(maxi, qr[i]);
+		}
+		vi a,b;
+		compute(n,maxi,a,b);
+		F1(i,0,m-1){
+			maxi = max(maxi, qr[i]);
+			cout << a[qr[i]-1] << "/" << b[qr[i]-1] << endl ;
+		}
 	}
 }

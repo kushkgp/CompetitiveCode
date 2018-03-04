@@ -36,9 +36,9 @@ typedef pair<int,int> pii;
 typedef vector<pii> vii;
 typedef vector<vii> vvii;
 
-bool phi[(int)1e6+1];
-ll n = (int)1e6+1;
-ll k;
+bool phi[(int)1e4+1];
+int n = (int)1e4+1;
+int k;
 vi primes;
 
 int precompute(){
@@ -54,14 +54,14 @@ int precompute(){
 	}
 	return 1;
 }
-int compute(ll p, ll &ans){
-	ll cnt=0;
+int compute(int p, int &ans){
+	int cnt=0;
 	while(k%p==0)
 		cnt++,k/=p;
 	if(!cnt)
 		return 1;
-	ll cnt1=0;
-	ll bs=p;
+	int cnt1=0;
+	int bs=p;
 	while(n>=bs){
 		cnt1+=(n/bs);
 		if(bs>(double)n/p)
@@ -70,8 +70,8 @@ int compute(ll p, ll &ans){
 	}
 	ans = min(ans, cnt1/cnt);
 }
-ll get_answer(ll &ans){
-	ans=LLONG_MAX;
+int get_answer(int &ans){
+	ans=INT_MAX;
 	F1(i,0,(int)primes.size()-1 && primes[i]<=k){
 		compute(primes[i],ans);
 	}
@@ -85,9 +85,10 @@ int main(){
 	precompute();
 	int t;
 	cin >> t;
-	ll ans;
+	int ans;
+	int C=1;
 	while(t--){
 		cin >> n >> k;
-		cout << get_answer(ans) << endl;
+		cout << "Case " << C++ << ": " << get_answer(ans) << endl;
 	}
 }

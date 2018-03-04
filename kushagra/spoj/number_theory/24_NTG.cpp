@@ -9,6 +9,7 @@
 #define min3(a,b,c) (min(min(a,b),c))
 #define inf 1e9
 #define mod 1000000007
+#define MOD 1000000007
 
 #define F1(x,y,z) for(int x = y; x <= z; x++)
 #define F2(x,y,z) for(int x = y; x >= z; x--)
@@ -36,58 +37,67 @@ typedef pair<int,int> pii;
 typedef vector<pii> vii;
 typedef vector<vii> vvii;
 
-bool phi[(int)1e6+1];
-ll n = (int)1e6+1;
-ll k;
-vi primes;
+int phi[(int)1e5+1];
+ll ans[(int)1e5+1];
+ll prefix[(int)1e5+1];
+int n = (int)1e5+1;
+int k;
 
-int precompute(){
-	fill(begin(phi),end(phi),false);
-	phi[0]=phi[1]=1;
-	F1(i,2,n){
-		if(!phi[i]){
-			primes.pb(i);
-			for(int j=i;(ll)j*i<=n;j++){
-				phi[j*i]=true;
-			}
-		}
-	}
-	return 1;
-}
-int compute(ll p, ll &ans){
-	ll cnt=0;
-	while(k%p==0)
-		cnt++,k/=p;
-	if(!cnt)
-		return 1;
-	ll cnt1=0;
-	ll bs=p;
-	while(n>=bs){
-		cnt1+=(n/bs);
-		if(bs>(double)n/p)
-			break;
-		bs*=p; 
-	}
-	ans = min(ans, cnt1/cnt);
-}
-ll get_answer(ll &ans){
-	ans=LLONG_MAX;
-	F1(i,0,(int)primes.size()-1 && primes[i]<=k){
-		compute(primes[i],ans);
-	}
-	if(k!=1){
-		compute(k,ans);
+
+ll power(ll base, int expo){
+	ll ans = 1;
+	while(expo){
+		if(expo&1)
+			ans*=base;
+		base*=base;
+		base%=mod, ans%=mod;
+		expo>>=1;
 	}
 	return ans;
 }
 
+int precompute(){
+	fill(begin(phi),end(phi),0);
+	fill(begin(ans),end(ans),0);
+	ans[1]=1;
+	F1(i,0,n){
+		prefix[i] = power(i,k);
+	}
+	F1(i,2,n){
+		if(!phi[i]){
+			for(int j=i;(ll)j*i<=n;j++){
+				phi[j*i]=i;
+			}
+			phi[i]=i-1;
+		}
+		else{
+			int val1=1,val2=i;
+			while(val2%phi[i]==0){
+				val2/=phi[i],val1*=phi[i];
+			}
+			if(val2==1)
+				phi[i] = (val1/phi[i])*phi[phi[i]];
+			else
+				phi[i] = phi[val1]*phi[val2];
+		}
+		for(int j=1;j<=n/i;j++){
+			ans[i*j]+=((prefix[j]*(ll)phi[i])%mod);
+			ans[i*j]%=mod;
+		}
+		ans[i]+=ans[i-1];
+		ans[i]+=prefix[i];
+		ans[i]%=mod;
+	}
+	return 1;
+}
+
 int main(){
-	precompute();
 	int t;
-	cin >> t;
-	ll ans;
+	cin >> k >> t;
+	precompute();
 	while(t--){
-		cin >> n >> k;
-		cout << get_answer(ans) << endl;
+		int l,r;
+		cin >> l >> r;
+		cout << (ans[r] - ans[l-1] + mod)%mod << endl;
 	}
 }

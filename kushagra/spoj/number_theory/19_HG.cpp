@@ -39,6 +39,7 @@ typedef vector<vii> vvii;
 bool phi[(int)1e5+1];
 ll n = (int)1e5;
 ll k;
+int f=0;
 vi primes;
 
 int precompute(){
@@ -90,6 +91,8 @@ int compute(ll p, vi &a, vi &b, ll &ans){
 	expo1 = min(expo1, expo2);
 	F1(i,0,expo1-1){
 		ans*=p;
+		if(ans>1e9)
+			f=1;
 		ans%=(ll)inf;
 	}
 	return ans;
@@ -119,5 +122,8 @@ int main(){
 			compute(a[i],a,b,ans);
 	}
 	// cout << ans << endl;
-	printf("%09d\n",(int)ans);
+	if(f)
+		printf("%09d\n",(int)ans);
+	else
+		printf("%d\n",(int)ans);
 }

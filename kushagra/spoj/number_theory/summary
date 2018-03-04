@@ -1,2 +1,5 @@
 sieve of erastothenes 	-> normal 		i(2,sqrt(n))  	j(1,n/i)
 						-> modified 	i(2,sqrt(n)) 	j(i,n/i)
+totient ->				phi[a*b] = phi[a]*phi[b] , gcd(a,b)=1
+
+Farey sequence -> https://en.wikipedia.org/wiki/Farey_sequence 
