@@ -32,21 +32,7 @@ typedef pair<int,int> pii;
 typedef v<pii> vpii;
 
 #define N 1000000
-int phi[N/64+1];
-vi primes;
-#define gP(n) (phi[n>>6]&(1<<((n>>1)&31)))
-#define rP(n) (phi[n>>6]&=~(1<<((n>>1)&31)))
-
-void precompute()
-{
-	memset(phi,-1,sizeof(phi));
-	primes.pb(2);
-	for(int i = 3; i<=N; i+=2)
-		if(gP(i)){
-			primes.pb(i);
-			for(int j = i; j <=N/i; j+=2) rP(i*j);
-		}
-}
+unsigned long long int phi[1000001];
 
 void precompute(){
 	fill(begin(phi),end(phi),1);
