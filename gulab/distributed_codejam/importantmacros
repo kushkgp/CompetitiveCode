@@ -19,8 +19,8 @@
 #define all(c) (c).begin(),(c).end()
 #define allr(c) (c).rbegin(),(c).rend()
 
-#define F1(x,y,z) for(int x = y; x <= z; x++)
-#define F2(x,y,z) for(int x = y; x >= z; x--)
+#define F1(x,y,z) for(auto x = y; x <= z; x++)
+#define F2(x,y,z) for(auto x = y; x >= z; x--)
 #define MOD 1000000007
 
 using namespace std;

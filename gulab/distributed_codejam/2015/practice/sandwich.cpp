@@ -37,13 +37,14 @@ pair<ll, ll> getSegment(int i, int n, ll size){
 }
 
 int main(){
-	// compute locally
 	int n = NumberOfNodes();
 	int size = GetN();
 	int id = MyNodeId();
-	pair<ll, ll> segment = getSegment(id, n, size);
+
+	// compute locally
 	ll tot = 0, lmax = 0, rmax = 0, imax = 0;
 	{
+		pair<ll, ll> segment = getSegment(id, n, size);
 		ll dp = 0;
 		F1(i,segment.ff, segment.ss-1){
 			int x = -GetTaste(i);
@@ -64,6 +65,7 @@ int main(){
 		PutLL(0, imax);
 		Send(0);
 	}
+
 	// dp on received data
 	tot = lmax = rmax = imax = 0;
 	if(id==0){
