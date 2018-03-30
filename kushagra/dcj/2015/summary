@@ -1,5 +1,0 @@
-2> 	Maximum positive from the ends  == total - maximum negative subarray sum
-	**combining dp on chunks 
-
-3>	Moore combining structure, moore count can be summed over chunks;
-
