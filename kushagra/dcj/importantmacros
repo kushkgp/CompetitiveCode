@@ -1,0 +1,40 @@
+/*
+	Author		:	Kushagra Aggarwal
+	Institute	:	IIT Kharagpur
+*/
+#include <bits/stdc++.h>
+#include <message.h>
+#include "problem_name.h"
+
+#define F first
+#define S second
+
+#define FOR(i,a,b) for (auto i = (a); i <= (b); ++i)
+#define NFOR(i,a,b) for(auto i = (a); i >= (b); --i)
+
+#define all(x) (x).begin(), (x).end()
+#define allr(c) (c).rbegin(),(c).rend()
+
+#define sz(x) int(x.size())
+
+#define inf 1e9
+#define mod 1000000007
+
+#define max3(a,b,c) (max(max(a,b),c))
+#define min3(a,b,c) (min(min(a,b),c))
+
+#define pb push_back
+#define mp make_pair
+
+using namespace std;
+
+typedef long long int ll;
+
+template <typename X> using v = vector<X>;
+template <typename X> using vv = v<v<X> >;
+
+typedef v<int> vi;
+typedef v<vi> vvi;
+typedef pair<int,int> pii;
+typedef v<pii> vpii;
+
