@@ -31,3 +31,8 @@ typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
+
+int main(){
+	const int n = NumberOfNodes();
+	const int id = MyNodeId();
+}
