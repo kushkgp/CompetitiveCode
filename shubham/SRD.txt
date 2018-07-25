@@ -1,0 +1,12 @@
+
+SRD
+
+blog/notes : https://blog.anudeep2011.com/mos-algorithm/
+
+questions : https://www.spoj.com/problems/DQUERY/
+
+SRD : take o(n) prerocessing time but can handle updates query in o(sqrt(n)) time
+
+sparste table : takes o(nlogn) preprocessing time but cannt handle updates...query in o(1) time
+
+MO's algorithm : takes o((n+m)sqrt(n)) time, should be used when result of one query depends on another and normal SRD and sparse table approaches cannot be used.
