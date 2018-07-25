@@ -30,4 +30,7 @@ Advanced Data Structure{
 	TRIE:
 		MORSE
 		SUBXOR
+		
+	SRD:	
+		DQUERY
 }
