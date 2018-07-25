@@ -1,0 +1,33 @@
+
+Advanced Data Structure{
+	Array:
+		RangeSum
+	Segment trees:
+		Normal:
+			KGSS
+			FREQUENT
+			DCEPC206
+			GSS1
+			GSS3
+			PATULJCI(Read MOORE voting algorithm first)
+		Lazy:
+			DCEPC11I
+			Horrible
+			LITE	
+			POSTERS
+			RPAR
+	BIT:
+		Normal:
+			DCEPC206
+			KGSS
+		+some other logic:
+			INCSEQ
+			INCDSEQ
+			INVCNT
+			KOILINE
+			SAS001
+			SSEQ
+	TRIE:
+		MORSE
+		SUBXOR
+}
