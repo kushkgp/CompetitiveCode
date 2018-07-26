@@ -19,7 +19,6 @@ Advanced Data Structure{
 	BIT:
 		Normal:
 			DCEPC206
-			KGSS
 		+some other logic:
 			INCSEQ
 			INCDSEQ
@@ -30,7 +29,6 @@ Advanced Data Structure{
 	TRIE:
 		MORSE
 		SUBXOR
-		
 	SRD:	
 		DQUERY
 }

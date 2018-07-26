@@ -31,6 +31,11 @@ typedef v<vi> vvi;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
 
+/*To fill an array with 0*/
+memset( cnt, 0, sizeof(cnt) );
+/*To fill a vector with 0*/
+fill( all(cnt), 0);
+
 /* To consume line with enter (cin or scanf don't consume enter)*/
 istream& getline (istream&& is, string& str, char delim)
 
