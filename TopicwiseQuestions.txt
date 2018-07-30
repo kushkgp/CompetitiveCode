@@ -11,6 +11,7 @@ Advanced Data Structure{
 			GSS3
 			PATULJCI(Read MOORE voting algorithm first)
 		Lazy:
+			MULTQ3
 			DCEPC11I
 			Horrible
 			LITE	
@@ -19,6 +20,7 @@ Advanced Data Structure{
 	BIT:
 		Normal:
 			DCEPC206
+			AKVQLD03
 		+some other logic:
 			INCSEQ
 			INCDSEQ
@@ -29,6 +31,97 @@ Advanced Data Structure{
 	TRIE:
 		MORSE
 		SUBXOR
-	SRD:	
+	SRD+MO's Algo:	
 		DQUERY
+}
+
+DP{
+	ACMAKER
+	ACODE
+	AIBOHP
+	ANARC05H
+	BAT1
+	BAT2
+	BAT3
+	BCAKE
+	BORW
+	BYTESM2
+	CODEM4
+	CODERE3(LIS)
+	COINS
+	COUNT
+	CRSCNTRY(LCS)
+	DBALLZ
+	DCEPC501
+	DCOWS
+	DSUBSEQ
+	EASYPROB
+	FPOLICE
+	GNY07H
+	LSORT
+	MARTIAN
+	MBALL
+	MBLAST
+	MENU	
+	MINVEST
+	MIXTURES
+	MKBUDGET
+	MMAXPER
+	MPILOT
+	MSTRING
+	NGON
+	NOCHANGE
+	NOVICE43
+	PARTY
+	PIGBANK
+	ROCK
+	SCALES
+	SCUBADIV
+	SEQPAR
+	SQBR
+	SSHUFFLE
+	THREECOL
+	TRT
+	TWENDS
+
+	M3TILE
+	// M4TILE (Write recursion for practice)
+	M5TILE
+
+
+	HISTOGRA
+	CTGAME
+
+	Easy:
+		Knapsack:
+			KNAPSACK
+		Edit Distance:
+			EDIST
+		Top Down:
+			COINS
+
+	Hard:
+		FCANDY
+		Convex Hull Technique:
+			ACQUIRE
+			APIO10A
+		Bit Masking:
+			CODESPTD
+			MNTILE
+}
+
+String{
+	Booths's Algo:
+		BEADS
+		MINMOVE
+}
+
+Misc{
+	BITDIFF
+	MAY99_3
+	POUR1
+	Greedy:
+		BLOPER
+		CEQU
+		CHOCOLA(tricky)
 }
