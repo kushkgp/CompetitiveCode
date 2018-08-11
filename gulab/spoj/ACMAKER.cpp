@@ -16,11 +16,12 @@ int solve(const string & s, const vector<string> & sent){
 			{
 				dp[f][j] = dp[f][j];
 				if(!(s.length()-1-j < x) && (sent.size() - x - 1 <= j)){
-				if((*word)[i] == s[j]){
-					if(j) dp[f][j] += dp[!f][j-1]+dp[f][j-1];
-					else dp[f][j]++;
-					check = 1;
-				}}
+					if((*word)[i] == s[j]){
+						if(j) dp[f][j] += dp[!f][j-1]+dp[f][j-1];
+						else dp[f][j]++;
+						check = 1;
+					}
+				}
 				// cout<<(*word)[i]<<" "<< s[j]<<" "<<dp[f][j] <<endl;
 			}
 		}

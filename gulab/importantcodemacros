@@ -36,9 +36,12 @@ memset( cnt, 0, sizeof(cnt) );
 /*To fill a vector with 0*/
 fill( all(cnt), 0);
 
+/*names of some useful string functions*/
+atoi()	(cstring)
+c_str()	(member of string class)
+
 /* To consume line with enter (cin or scanf don't consume enter)*/
 istream& getline (istream&& is, string& str, char delim)
-
 
 /* split string with delimiter
 istream& getline (istream&& is, string& str, char delim)

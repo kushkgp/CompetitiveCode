@@ -65,7 +65,6 @@ public:
 		for (l += n, r += n; l <= r; l >>= 1, r >>= 1, k <<= 1) {
 			if (l&1) apply(l++, value, k);
 			if (!(r&1)) apply(r--, value, k);
-			// if(value == 1) cout<<d[5]<<endl;
 		}
 		build(l0, l0);													/* building along r to root */
 		build(r0, r0);													/* building along r to root */
