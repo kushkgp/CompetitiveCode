@@ -117,6 +117,13 @@ String{
 		MINMOVE
 	Hashing(Rabin Karp):
 		GoodSubstrings -> Codeforces
+	KMP/Z:
+	FINDSR
+	PERIOD
+	TESSER
+	ARDA1
+	
+	PSTRING ( + DP )
 }
 
 Misc{
