@@ -118,12 +118,12 @@ String{
 	Hashing(Rabin Karp):
 		GoodSubstrings -> Codeforces
 	KMP/Z:
-	FINDSR
-	PERIOD
-	TESSER
-	ARDA1
+		FINDSR
+		PERIOD
+		TESSER
+		ARDA1
 	
-	PSTRING ( + DP )
+		PSTRING ( + DP )
 }
 
 Misc{
