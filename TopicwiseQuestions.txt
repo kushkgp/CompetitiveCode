@@ -115,6 +115,8 @@ String{
 	Booths's Algo:
 		BEADS
 		MINMOVE
+	Hashing(Rabin Karp):
+		GoodSubstrings -> Codeforces
 }
 
 Misc{
