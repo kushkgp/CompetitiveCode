@@ -123,6 +123,7 @@ String{
 		TESSER
 		ARDA1
 		
+		CF25E
 		SUB_PROB ( Tough TL )
 		PSTRING ( + DP )
 		G. Anthem of Berland ( Codeforces : Tough DP )
