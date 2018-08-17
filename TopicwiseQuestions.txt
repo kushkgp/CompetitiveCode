@@ -124,6 +124,7 @@ String{
 		ARDA1
 	
 		PSTRING ( + DP )
+		G. Anthem of Berland ( Codeforces : Tough DP )
 }
 
 Misc{
