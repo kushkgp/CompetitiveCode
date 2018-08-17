@@ -122,7 +122,8 @@ String{
 		PERIOD
 		TESSER
 		ARDA1
-	
+		
+		SUB_PROB ( Tough TL )
 		PSTRING ( + DP )
 		G. Anthem of Berland ( Codeforces : Tough DP )
 }
