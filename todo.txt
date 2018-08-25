@@ -2,3 +2,7 @@ Strings
   1. Suffix Array
   2. Suffix Tree
   3. LCP Array
+
+Graphs
+  1. Max Flow
+  2. Maximum matching
