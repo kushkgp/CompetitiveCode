@@ -1,4 +1,3 @@
-
 Advanced Data Structure{
 	Array:
 		RangeSum
@@ -109,6 +108,8 @@ DP{
 		Bit Masking:
 			CODESPTD
 			MNTILE
+		Tree:
+			ADASALES
 }
 
 String{
@@ -127,6 +128,23 @@ String{
 		SUB_PROB ( Tough TL )
 		PSTRING ( + DP )
 		G. Anthem of Berland ( Codeforces : Tough DP )
+}
+
+Graphs{
+	DFS/BFS:
+		DIGOKEY
+		SPIKES
+
+	Dijkstra:
+		DP (+bitmasking)
+	
+	MST:
+		ULM09
+
+	SCC:
+		TFRIENDS
+		TOUR
+		CAPCITY
 }
 
 Misc{

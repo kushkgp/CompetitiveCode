@@ -1,0 +1,5 @@
+-> 2d dp (need i-1,j and i,j-1)
+	question: 2015 online 2 question, name: mutexes
+
+-> pointer jumping ( to reduce expected max )
+	question: 

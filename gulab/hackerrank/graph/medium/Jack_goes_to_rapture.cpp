@@ -28,7 +28,7 @@ typedef vector<vi> vvi;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
 
-void prim(int start, vector<vpii> & adj,vi & dist){
+void dijkstra(int start, vector<vpii> & adj,vi & dist){
 	dist[start] = 0;
 	set<pii> s;
 	s.insert(mp(0,start));
@@ -59,7 +59,7 @@ int main(){
 		adj[v].pb(mp(u,c));
 	}
 	vi dist(n,inf);
-	prim(0,adj,dist);
+	dijkstra(0,adj,dist);
 	if(dist[n-1]!=inf)
 		cout<<dist[n-1]<<endl;
 	else
