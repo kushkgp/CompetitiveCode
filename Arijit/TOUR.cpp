@@ -2,7 +2,7 @@
 
 using namespace std;
 
-vector <int> adj[200005];
+vector <int> adj[200005], radj[200005];
 vector <int> vec[200005];
 bool visited[200005] = {false};
 vector <int> low (200005);
@@ -53,6 +53,14 @@ void dfs( int vertex, int parent )
 
 }
 
+void dfs1( int u )
+{
+    visited[u] = true;
+    for( int i = 0; i < radj[u].size(); i++ )
+        if( !visited[radj[u][i]] )
+            dfs1(radj[u][i]);
+}
+
 int main() 
 {
     int a, b, T;
@@ -69,6 +77,7 @@ int main()
             scc_index[i] = -1;
             stackmember[i] = false;
             adj[i].clear();
+            radj[i].clear();
             low[i] = disc[i] = -1;
             odd = 0;
         }
@@ -80,6 +89,7 @@ int main()
             {
                 cin>>a;
                 adj[i].push_back(a);
+                radj[a].push_back(i);
             }
         }
 
@@ -89,29 +99,47 @@ int main()
 
         int i, j;
 
-        vector <int> outdeg(odd, 0);
+        // vector <int> outdeg(odd, 0);
 
-        for( i = 0; i < odd; i++ )
-        {
-            for( j = 0; j < vec[i].size(); j++ )
-            {
-                int u = vec[i][j];
-                for( int k = 0; k < adj[u].size(); k++ )
-                    if( scc_index[adj[u][k]] != i )
-                        outdeg[i]++;
+        // for( i = 0; i < odd; i++ )
+        // {
+        //     for( j = 0; j < vec[i].size(); j++ )
+        //     {
+        //         int u = vec[i][j];
+        //         for( int k = 0; k < adj[u].size(); k++ )
+        //             if( scc_index[adj[u][k]] != i )
+        //                 outdeg[i]++;
+        //     }
+        // }
+        // int first = 0, count = 0;
+
+        // for( int i = 0; i < odd; i++ )
+        //     if( outdeg[i] == 0 )
+        //     {
+        //         first = i;
+        //         count++;
+        //     }
+        // if( count != 1 )
+        //     cout<<"0"<<endl;
+        // else
+        //     cout<<vec[first].size()<<endl;
+
+        if(vec[0].size()){
+            for(int i = 1; i <= n; i++)
+                visited[i] = 0;
+            dfs1(vec[0][0]);
+            int f = 1;
+            for(int i = 1; i <= n; i++)
+                if(!visited[i])
+                    f = 0;
+
+            if(f){
+                cout<<vec[0].size()<<endl;
             }
+            else
+                cout<<0<<endl;
         }
-        int first = 0, count = 0;
-
-        for( int i = 0; i < odd; i++ )
-            if( outdeg[i] == 0 )
-            {
-                first = i;
-                count++;
-            }
-        if( count != 1 )
-            cout<<"0"<<endl;
         else
-            cout<<vec[first].size()<<endl;
+            cout<<0<<endl;
     }  
 }  
