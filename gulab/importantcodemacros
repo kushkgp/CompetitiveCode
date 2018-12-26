@@ -23,36 +23,50 @@
 #define MOD 1000000007
 
 using namespace std;
+/*Use this*/
 typedef long long int ll;
-template <typename X> using v = vector<X>;
-template <typename X> using vv = v<v<X> >;
 typedef v<int> vi;
 typedef v<vi> vvi;
 typedef pair<int,int> pii;
 typedef vector<pii> vpii;
 
+/*or this*/
+using ll 	= long long;
+using vi 	= v<int>;
+using vvi 	= v<vi>;
+using pii 	= pair<int,int>;
+using vpii 	= vector<pii>;
+
+/*Only works in c++14 or higher*/
+template <typename X> using v = vector<X>;
+template <typename X> using vv = v<v<X> >;
+
 /*To fill an array with 0*/
 memset( cnt, 0, sizeof(cnt) );
+
 /*To fill a vector with 0*/
 fill( all(cnt), 0);
 
 /*names of some useful string functions*/
 atoi()	(cstring)
+strcpy()(cstring)
+strtok()(cstring)
 c_str()	(member of string class)
 
 /* To consume line with enter (cin or scanf don't consume enter)*/
 istream& getline (istream&& is, string& str, char delim)
 
-/* split string with delimiter
-istream& getline (istream&& is, string& str, char delim)
-vector<string> split(const string &s, char delim) {
-	stringstream ss(s);
-	string item;
-	vector<string> tokens;
-	while (getline(ss, item, delim)) {
-		tokens.push_back(item);
+/* To split a string acc to delimiter */
+vector<string> split(const string & s, const char * d){
+	char *c = new char[s.size()+1];
+	strcpy(c, s.c_str());
+	vector<string> ans;
+	char * p = strtok(c, d);
+	while(p){
+		ans.pb(p);
+		p = strtok(0, d);
 	}
-	return tokens;
+	return ans;
 }
 
 -> op+ has higher precedence than op>> or op<<
